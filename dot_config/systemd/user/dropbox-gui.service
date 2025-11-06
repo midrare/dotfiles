@@ -1,0 +1,19 @@
+[Unit]
+Description=Show Dropbox tray icon
+After=graphical-session.target network.target
+Wants=network-online.target
+BindsTo=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/%u/.Xauthority
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+Environment=WAYLAND_DISPLAY=wayland-0
+ExecStartPre=/bin/sh -c "case \"$(sleep --version)\" in *GNU* ) POLL_SECS=0.1; POLL_MAX=3000;; *) POLL_SECS=1; POLL_MAX=300;; esac; counter=0; while ! /bin/busctl --user status org.kde.StatusNotifierWatcher >/dev/null 2>&1; do sleep $POLL_SECS; counter=$(expr $counter + 1); [ $counter -ge $POLL_MAX ] && exit 1; done; exit 0"
+ExecStartPre=/bin/busctl --user status org.kde.StatusNotifierWatcher
+ExecStart=/bin/systemctl --user restart dropbox
+
+[Install]
+WantedBy=graphical-session.target
