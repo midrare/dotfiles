@@ -18,10 +18,12 @@
     "on-click": "activate",
   },
   "clock": {
-    "format": "{:>%I:%M %p \n %Y/%m/%d}",
+    "format": "{:>%I:%M %p\n%Y/%m/%d}",
+    "tooltip": true,
+    "tooltip-format": "{:>%I:%M %p\n%A %B %d %Y}",
     "interval": 1,
     "align": 1,
-    "justify": "right",
+    "justify": "center",
   },
   "custom/power": {
     "format": "⏻",
