@@ -1,12 +1,12 @@
 * {
-  /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-  font-family: "SauceCodePro Nerd Font", "Noto Sans", sans-serif;
   border: none;
-  text-shadow: none;
   box-shadow: none;
   border-radius: 0;
-  font-weight: 500;
+  font-family: "Noto Nerd Font", "Noto NF", "Overpass Nerd Font", "Overpass NF", "Arimo Nerd Font", "Arimo NF", "Nerd Font", "FontAwesome", "Noto Sans", "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 12.7px;
+  font-weight: 500;
+  text-shadow: none;
+  color: rgba(255, 255, 255, 1.0);
 }
 
 window#waybar {
@@ -23,8 +23,12 @@ window#waybar {
   padding: 0 10px;
 }
 
+.modules-right * {
+  font-family: "Overpass Nerd Font", "Overpass NF", "Arimo Nerd Font", "Arimo NF", "Noto Nerd Font", "Noto NF", "Nerd Font", "FontAwesome", "Noto Sans", "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
 .modules-right label.module {
-    padding: 0 8px;
+  padding: 0 8px;
 }
 
 #clock {
