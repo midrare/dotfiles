@@ -4,7 +4,7 @@
   "height": 40,
   "modules-left": ["nwg-menu", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": [],
-  "modules-right": ["tray", "network", "pulseaudio", "clock"],
+  "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
   "tray": {
     "spacing": 5,
   },
@@ -31,11 +31,11 @@
     "on-click": "poweroff",
   },
   "network": {
-    "format-wifi": " ({signalStrength}%)",
+    "format-wifi": "    ({signalStrength}%)",
     "format-ethernet": "",
     "format-disconnected": "",
     "tooltip-format": "{ifname}",
-    "tooltip-format-wifi": "{ifname} {essid}  ({signalStrength}%)",
+    "tooltip-format-wifi": "{ifname} {essid}     ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
@@ -60,4 +60,18 @@
     "scroll-step": 1,
     "on-click": "pavucontrol"
   },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "events": {
+      "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+      "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+    },
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{capacity}% {power}W {time} left",
+    "max-length": 25
+  }
 }
